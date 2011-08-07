@@ -1,4 +1,4 @@
-- title "<%= plural_name.titleize %>"
+- title <%= class_name %>.human_name(:count => 2)
 
 %table
   %tr
@@ -7,19 +7,16 @@
     <%- end -%>
   - for <%= instance_name %> in @<%= instances_name %>
     %tr
+      <%- if action? :edit -%>
+      %td= link_to <%= instance_name %>.name, <%= item_path :action => :edit %>
+      <%- end -%>
       <%- for attribute in model_attributes -%>
       %td= <%= instance_name %>.<%= attribute.name %>
       <%- end -%>
-      <%- if action? :show -%>
-      %td= link_to 'Show', <%= item_path %>
-      <%- end -%>
-      <%- if action? :edit -%>
-      %td= link_to 'Edit', <%= item_path :action => :edit %>
-      <%- end -%>
       <%- if action? :destroy -%>
-      %td= link_to 'Destroy', <%= item_path %>, :confirm => 'Are you sure?', :method => :delete
+      = td_with_delete_link_for <%= instance_name %>
       <%- end -%>
 
 <%- if actions? :new -%>
-%p= link_to "New <%= singular_name.titleize %>", <%= item_path :action => :new %>
-<%- end -%>
+= link_to_new <%= class_name %>
+<%- end -%
