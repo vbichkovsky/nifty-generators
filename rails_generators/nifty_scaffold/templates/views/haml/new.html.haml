@@ -1,7 +1,4 @@
-- title "New <%= singular_name.titleize %>"
+- title "Jauns " + <%= class_name %>.human_name.downcase
 
 <%= render_form %>
 
-<%- if action? :index -%>
-%p= link_to "Back to List", <%= plural_name %>_path
-<%- end -%>
