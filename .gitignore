@@ -5,3 +5,4 @@ doc
 tmp/**/*
 Gemfile.lock
 .bundle
+.emacs*
